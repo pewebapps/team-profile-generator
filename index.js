@@ -22,7 +22,16 @@ const questions = [
     {
         type: 'number',
         name: 'team_manager_id',
-        message: 'employee id?'
+        message: 'employee id?',
+        default: "",
+        validate: function (id) {
+            if (isNaN(id)) {
+                console.log("Please enter a valid number for employee id.")
+                return false;
+            } else {
+                return true;
+            }
+        },
     },
     {
         type: 'input',
