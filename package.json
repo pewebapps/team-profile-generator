@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Command line application that takes in employee information on a software engineering team and then generates an HTML webpage that displays a summary about each person",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pewebapps/team-profile-generator.git"
+  },
+  "author": "Piers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pewebapps/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/pewebapps/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.3"
+  }
+}
