@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/pewebapps/team-profile-generator/issues"
   },
-  "homepage": "https://github.com/pewebapps/team-profile-generator#readme"
+  "homepage": "https://github.com/pewebapps/team-profile-generator#readme",
+  "dependencies": {
+    "jest": "^28.1.3"
+  }
 }
