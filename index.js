@@ -34,12 +34,7 @@ const teamManagerQuestions = [
         message: 'employee id?',
         default: "",
         validate: function (id) {
-            if (isNaN(id)) {
-                console.log("Please enter a valid number for employee id.");
-                return false;
-            } else {
-                return true;
-            }
+            return numberValidation(id, "employee id")
         },
     },
     {
@@ -53,12 +48,7 @@ const teamManagerQuestions = [
         message: 'office number?',
         default: "",
         validate: function(officeNumber) {
-            if (isNaN(officeNumber)) {
-                console.log("Please enter a valid number for office number.");
-                return false;
-            } else {
-                return true;
-            }
+           return numberValidation(officeNumber, "office number")
         }
     }
 ]
@@ -98,6 +88,15 @@ const engineerQuestions = [
         message: 'GitHub username?'
     }
 ]
+
+const numberValidation = (value, inputField) => {
+    if (typeof value !== 'number' || isNaN(value)) {
+        console.log(`\nPlease enter a valid number for ${inputField}.`);
+        return false;
+    } else {
+        return true;
+    }
+} 
 
 const teamManagerPrompt = () => {
     inquirer
