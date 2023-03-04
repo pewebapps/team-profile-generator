@@ -70,6 +70,18 @@ const questions = [
             'Add an intern',
             'Finish building the team'
         ]
+    },
+    {
+        type: 'input',
+        name: 'engineer_name',
+        message: 'name of engineer?',
+        when: function(answer) {
+            if (answer.team_options === 'Add an engineer') {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 ]
 
