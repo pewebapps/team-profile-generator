@@ -13,6 +13,8 @@ const { validate } = require("@babel/types");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+let team = [];
+
 const employeeQuestions = [
     {
         type: 'input',
@@ -112,7 +114,14 @@ const teamManagerPrompt = () => {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            //TODO: - create team manager object
+            const manager = new Manager(
+                answers.name,
+                answers.id,
+                answers.email,
+                answers.office_number
+            );
+            team.push(manager);
+
             teamOptionsPrompt();
         })
 }
@@ -140,7 +149,14 @@ const engineerPrompt = () => {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            // TODO: - Create engineer Class
+            const engineer = new Engineer(
+                answers.name,
+                answers.id,
+                answers.email,
+                answers.github
+            );
+            team.push(engineer);
+
             teamOptionsPrompt();
         })
 
@@ -152,7 +168,14 @@ const internPrompt = () => {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            // TODO: - Create Intern Class
+            const intern = new Intern(
+                answers.name,
+                answers.id,
+                answers.email,
+                answers.school
+            );
+            team.push(intern);
+
             teamOptionsPrompt();
         })
 }
