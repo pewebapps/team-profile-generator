@@ -13,12 +13,11 @@ const { validate } = require("@babel/types");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
-
-const teamManagerQuestions = [
+const employeeQuestions = [
     {
         type: 'input',
-        name: 'team_manager_name',
-        message: 'You will first fill out information about the team manager.\n What is their name?',
+        name: 'name',
+        message: 'What is their name?',
         validate: function (name) {
             if (name) {
                 return true;
@@ -30,7 +29,7 @@ const teamManagerQuestions = [
     },
     {
         type: 'number',
-        name: 'team_manager_id',
+        name: 'id',
         message: 'employee id?',
         default: "",
         validate: function (id) {
@@ -41,7 +40,10 @@ const teamManagerQuestions = [
         type: 'input',
         name: 'team_manager_email',
         message: 'email address?'
-    },
+    }
+]
+
+const teamManagerQuestions = [
     {
         type: 'number',
         name: 'office_number',
@@ -69,21 +71,6 @@ const teamOptionsQuestion = [
 const engineerQuestions = [
     {
         type: 'input',
-        name: 'name',
-        message: 'name of engineer?'
-    },
-    {
-        type: 'number',
-        name: 'id',
-        message: 'employee id?'
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'email address?'
-    },
-    {
-        type: 'input',
         name: 'github',
         message: 'GitHub username?'
     }
@@ -99,12 +86,14 @@ const numberValidation = (value, inputField) => {
 } 
 
 const teamManagerPrompt = () => {
+    const questions = employeeQuestions.concat(teamManagerQuestions);
+    
     inquirer
-    .prompt(teamManagerQuestions)
-    .then((answers) => {
-        //TODO: - create team manager object
-        teamOptionsPrompt();
-    })
+        .prompt(questions)
+        .then((answers) => {
+            //TODO: - create team manager object
+            teamOptionsPrompt();
+        })
 }
 
 const teamOptionsPrompt = () => {
@@ -126,8 +115,9 @@ const teamOptionsPrompt = () => {
 }
 
 const engineerPrompt = () => {
+    const questions = employeeQuestions.concat(engineerQuestions);
     inquirer
-        .prompt(engineerQuestions)
+        .prompt(questions)
         .then((answers) => {
             // TODO: - Create engineer prompt
             teamOptionsPrompt();
