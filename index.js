@@ -60,6 +60,16 @@ const questions = [
                 return true;
             }
         }
+    },
+    {
+        type: 'list',
+        name: 'team_options',
+        message: 'team menu',
+        choices: [
+            'Add an engineer',
+            'Add an intern',
+            'Finish building the team'
+        ]
     }
 ]
 
