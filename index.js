@@ -19,12 +19,7 @@ const employeeQuestions = [
         name: 'name',
         message: 'What is their name?',
         validate: function (name) {
-            if (name) {
-                return true;
-            } else {
-                console.log("Invalid name. Please enter a name with at least one character.");
-                return false;
-            }
+            return emptyStringValidation(name, "name");
         }
     },
     {
@@ -72,7 +67,10 @@ const engineerQuestions = [
     {
         type: 'input',
         name: 'github',
-        message: 'GitHub username?'
+        message: 'GitHub username?',
+        validate: function(username) {
+            return emptyStringValidation(username, "GitHub username");
+        }
     }
 ]
 
@@ -85,9 +83,18 @@ const numberValidation = (value, inputField) => {
     }
 } 
 
+const emptyStringValidation = (string, inputField) => {
+    if (string) {
+        return true;
+    } else {
+        console.log(`Invalid ${inputField}. Please enter a ${inputField} with at least one character.`);
+        return false;
+    }
+}
+
 const teamManagerPrompt = () => {
     const questions = employeeQuestions.concat(teamManagerQuestions);
-    
+
     inquirer
         .prompt(questions)
         .then((answers) => {
