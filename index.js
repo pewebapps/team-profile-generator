@@ -34,7 +34,10 @@ const employeeQuestions = [
     {
         type: 'input',
         name: 'team_manager_email',
-        message: 'email address?'
+        message: 'email address?',
+        validate: function (email) {
+            return emptyStringValidation(email, "email address");
+        }
     }
 ]
 
