@@ -79,8 +79,23 @@ const teamOptionsQuestion = [
 const engineerQuestions = [
     {
         type: 'input',
-        name: 'engineer_name',
+        name: 'name',
         message: 'name of engineer?'
+    },
+    {
+        type: 'number',
+        name: 'id',
+        message: 'employee id?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'email address?'
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'GitHub username?'
     }
 ]
 
