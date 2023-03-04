@@ -35,7 +35,7 @@ const employeeQuestions = [
     },
     {
         type: 'input',
-        name: 'team_manager_email',
+        name: 'email',
         message: 'email address?',
         validate: function (email) {
             return emptyStringValidation(email, "email address");
@@ -159,7 +159,14 @@ const teamOptionsPrompt = () => {
                     internPrompt();
                     break;
                 case 'Finish building the team':
-                    console.log("Render HTML")
+
+                    fs.writeFile(outputPath, render(team), (err) => {
+                        if (err) {
+                            console.log("There was an error creating your team file");
+                        } else {
+                            console.log("Congratulations, you have created your team file.");
+                        }
+                    });
                     break;
             }
         })
