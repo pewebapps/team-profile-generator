@@ -108,6 +108,27 @@ const emptyStringValidation = (string, inputField) => {
     }
 }
 
+const startPrompt = () => {
+    const startQuestion = [
+        {
+            type: 'confirm',
+            name: 'start',
+            message: "Would you like to start building your team?"
+        }
+    ]
+
+    inquirer
+        .prompt(startQuestion)
+        .then((answers) => {
+            if (answers.start) {
+                console.log("Great, you will start by adding your manager.")
+                teamManagerPrompt();
+            } else {
+                console.log("Ok no worries");
+            }
+        })
+}
+
 const teamManagerPrompt = () => {
     const questions = employeeQuestions.concat(teamManagerQuestions);
 
@@ -180,5 +201,5 @@ const internPrompt = () => {
         })
 }
 
-teamManagerPrompt();
+startPrompt();
 
