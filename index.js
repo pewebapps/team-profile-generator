@@ -77,6 +77,17 @@ const engineerQuestions = [
     }
 ]
 
+const internQuestion = [
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What school do you go to?',
+        validate: function(school) {
+            return emptyStringValidation(school, "school");
+        }
+    }
+]
+
 const numberValidation = (value, inputField) => {
     if (typeof value !== 'number' || isNaN(value)) {
         console.log(`\nPlease enter a valid number for ${inputField}.`);
@@ -115,7 +126,7 @@ const teamOptionsPrompt = () => {
                     engineerPrompt();
                     break;
                 case 'Add an intern':
-                    console.log("Display add an intern prompt");
+                    internPrompt();
                     break;
                 case 'Finish building the team':
                     console.log("Render HTML")
@@ -129,10 +140,21 @@ const engineerPrompt = () => {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            // TODO: - Create engineer prompt
+            // TODO: - Create engineer Class
             teamOptionsPrompt();
         })
 
+}
+
+const internPrompt = () => {
+    const questions = employeeQuestions.concat(internQuestion);
+
+    inquirer
+        .prompt(questions)
+        .then((answers) => {
+            // TODO: - Create Intern Class
+            teamOptionsPrompt();
+        })
 }
 
 teamManagerPrompt();
