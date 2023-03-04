@@ -14,7 +14,7 @@ const { validate } = require("@babel/types");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-const questions = [
+const teamManagerQuestions = [
     {
         type: 'input',
         name: 'team_manager_name',
@@ -60,7 +60,10 @@ const questions = [
                 return true;
             }
         }
-    },
+    }
+]
+
+const teamOptionsQuestion = [
     {
         type: 'list',
         name: 'team_options',
@@ -70,23 +73,43 @@ const questions = [
             'Add an intern',
             'Finish building the team'
         ]
-    },
-    {
-        type: 'input',
-        name: 'engineer_name',
-        message: 'name of engineer?',
-        when: function(answer) {
-            if (answer.team_options === 'Add an engineer') {
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 ]
 
-inquirer
-    .prompt(questions)
+const engineerQuestions = [
+    {
+        type: 'input',
+        name: 'engineer_name',
+        message: 'name of engineer?'
+    }
+]
+
+const teamManagerPrompt = () => {
+    inquirer
+    .prompt(teamManagerQuestions)
     .then((answers) => {
-        console.log(JSON.stringify(answers, null, '  '));
+        //TODO: - create team manager object
+        teamOptionsPrompt();
     })
+}
+
+const teamOptionsPrompt = () => {
+    inquirer
+        .prompt(teamOptionsQuestion)
+        .then((answers) => {
+            switch (answers.team_options) {
+                case 'Add an engineer':
+                    console.log("Display add an enginner prompt");
+                    break;
+                case 'Add an intern':
+                    console.log("Display add an intern prompt");
+                    break;
+                case 'Finish building the team':
+                    console.log("Render HTML")
+                    break;
+            }
+        })
+}
+
+teamManagerPrompt();
+
