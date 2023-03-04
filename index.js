@@ -99,7 +99,7 @@ const teamOptionsPrompt = () => {
         .then((answers) => {
             switch (answers.team_options) {
                 case 'Add an engineer':
-                    console.log("Display add an enginner prompt");
+                    engineerPrompt();
                     break;
                 case 'Add an intern':
                     console.log("Display add an intern prompt");
@@ -109,6 +109,16 @@ const teamOptionsPrompt = () => {
                     break;
             }
         })
+}
+
+const engineerPrompt = () => {
+    inquirer
+        .prompt(engineerQuestions)
+        .then((answers) => {
+            // TODO: - Create engineer prompt
+            teamOptionsPrompt();
+        })
+
 }
 
 teamManagerPrompt();
